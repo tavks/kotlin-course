@@ -46,6 +46,7 @@ fun sumIntOrDoubleValues(list: List<Any>): Double {
             sum += element.toDouble()
         }
     }
+    return sum
 }
 
 fun tryCastToListAndPrint(obj: Any) {
