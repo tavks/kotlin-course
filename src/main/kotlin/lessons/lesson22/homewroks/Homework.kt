@@ -17,7 +17,7 @@ fun main() {
         val a3 = listOf<Int>(1, 2, 3)
         val a4 = a3[3]
     } catch (e: IndexOutOfBoundsException) {
-        println("There is no object on given index")
+        println("There is no object at given index")
     }
 
     //3. ClassCastException
