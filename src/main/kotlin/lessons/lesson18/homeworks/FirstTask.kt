@@ -1,5 +1,7 @@
 package lessons.lesson18.homeworks
 
+import java.io.InputStream
+
 interface Powerable {
     fun powerOn()
     fun powerOff()

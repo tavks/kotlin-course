@@ -1,13 +1,13 @@
 package lessons.lesson18.homeworks
 
-class Fridge(override val maxTemperature: Int) : OpenableAndTemperatureRegulatableEquipment() {
+class Refrigerator(override val maxTemperature: Int) : OpenableAndTemperatureRegulatableEquipment() {
     fun produceCold() {
         powerOn()
         println("producing cold")
     }
 }
 
-class WashingMachine(override val maxTemperature: Int): OpenableAndTemperatureRegulatableEquipment() {
+class AutomaticWashingMachine(override val maxTemperature: Int): OpenableAndTemperatureRegulatableEquipment() {
     fun washClothes() {
         powerOn()
         println("washing")

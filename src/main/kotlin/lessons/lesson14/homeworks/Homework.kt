@@ -87,7 +87,7 @@ class Rack(val shelves: MutableList<Shelf>, val maxShelvesCount: Int) {
         return false
     }
 
-    fun getShelves(): List<Shelf> {
+    fun viewShelves(): List<Shelf> {
         return shelves.toList()
     }
 
@@ -155,7 +155,7 @@ class Shelf(val capacity: Int, var items: MutableList<String>) {
         return false
     }
 
-    fun getItems(): List<String> {
+    fun viewItems(): List<String> {
         return items.toList()
     }
 }

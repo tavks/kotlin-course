@@ -20,7 +20,7 @@ val a8 = num.max()
 val a9 = num.min()
 val a10 = num.firstOrNull()
 val a11 = num.contains(2)
-val a12 = num.filter { 18 <= it <= 30 }
+val a12 = num.filter { it in 18..30 }
 val a13 = num.filterNot { ((it % 2 == 0) && (it % 3 == 0)) }
 val a14 = num.filterNotNull()
 val a15 = str.map { it.count() }
