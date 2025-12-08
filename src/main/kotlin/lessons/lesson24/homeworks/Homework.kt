@@ -63,7 +63,9 @@ fun String.colorize(color: (String) -> String): String {
 }
 
 fun String.colorizeWords(func: (String) -> String): String {
-    return this.colorize(func)
+    return this
+        .split(" ")
+        .joinToString(" ") { word -> func(word) }
 }
 
 //1. цвет слова зависит от его характеристик (для каждой характеристики отдельный цвет):
@@ -73,13 +75,14 @@ fun String.colorizeWords(func: (String) -> String): String {
 //длина кратна двум
 //для всех прочих отдельный цвет.
 fun exmpl1(word: String): String {
-    return when {
+    val color = when {
         word.first().isUpperCase() -> Colors.RED
         word.length < 3 -> Colors.GREEN
         word.length > 6 -> Colors.BLUE
         word.length % 2 == 0 -> Colors.CYAN
         else -> Colors.RESET
     }
+    return word.colorize({ color })
 }
 
 //2. цвет слова выбирается по очереди из списка цветов для каждого слова через счётчик.
@@ -129,4 +132,11 @@ var exmpl3: (String) -> String = fun(word: String): String {
         7 -> return Colors.WHITE
     }
     return Colors.RESET
+}
+
+fun main() {
+    val text = "Напиши функцию colorizeWords которая печатает слова из длинного предложения разбитого по пробелу разным цветом. Правило подбора цвета для каждого слова нужно передавать в виде функции, которая принимает слово и возвращает это же слово но уже в цвете через функцию colorize"
+    println(text.colorizeWords({ exmpl1(text) }))
+    println(text.colorizeWords({ exmpl2(text) }))
+    println(text.colorizeWords({ exmpl3(text) }))
 }
