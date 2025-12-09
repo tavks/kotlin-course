@@ -32,11 +32,10 @@ fun logPerson(person: Person) {
 //Создайте функцию toEmployee, которая расширяет класс Person, который может быть null.
 // В функции используйте функцию let для создания Employee, только если объект Person не null.
 // В противном случае возвращается null
-fun Person.toEmployee(): Employee? {
-    this?.let {
-        return Employee(this.name, this.age, "smth")
+fun Person?.toEmployee(): Employee? {
+    return this?.let {
+        Employee(this.name, this.age, "smth")
     }
-    return null
 }
 
 fun main() {
@@ -63,8 +62,8 @@ fun main() {
     //Создайте объект класса Person. Используйте функцию with, чтобы создать из этого объекта Employee,
     // указав дополнительно должность. Возвращаемым значением должен быть новый объект Employee.
     val somePerson = Person("Vova", 26)
-    with(somePerson) {
-        val someEmployee = Employee(name, age, position = "Something doer")
+    val someEmployee = with(somePerson) {
+         Employee(name, age, position = "Something doer")
     }
 
     //Задание 5: Использование run для преобразования и инициализации Employee
