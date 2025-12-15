@@ -71,7 +71,4 @@ fun main() {
     val yetAnotherEmployee = somePerson.run {
         Employee(name, age, position = "Clucking the buttons")
     }
-
-
-
 }
