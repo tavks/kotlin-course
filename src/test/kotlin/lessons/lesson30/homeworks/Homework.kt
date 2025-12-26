@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-public class Tests() {
+class Tests() {
     private val inventoryManager = InventoryManager(10)
 
     @BeforeEach
@@ -39,38 +39,38 @@ public class Tests() {
     }
 
     @Test
-    fun testAddItemThrowsException() {
+    fun testAddItemThrowsExceptionIfQuantityIsAbovePermitted() {
         assertThrows<IllegalStateException> {
             inventoryManager.addItem("apple", 11)
         }
     }
 
     @Test
-    fun testRemoveItemShouldRemoveExisting() {
+    fun testRemoveItemShouldRemoveExistingItem() {
         inventoryManager.addItem("apple", 1)
         assertEquals(true, inventoryManager.removeItem("apple", 1))
         assertEquals(0, inventoryManager.getItemCount("apple"))
     }
 
     @Test
-    fun testRemoveItemShouldNotRemoveMoreThanExists() {
+    fun testRemoveItemShouldNotRemoveMoreItemsThanExists() {
         inventoryManager.addItem("apple", 1)
         assertEquals(false, inventoryManager.removeItem("apple", 2))
         assertEquals(1, inventoryManager.getItemCount("apple"))
     }
 
     @Test
-    fun testRemoveItemShouldNotRemoveNonExisting() {
+    fun testRemoveItemShouldNotRemoveNonExistingItem() {
         assertEquals(false, inventoryManager.removeItem("apple", 2))
     }
 
     @Test
-    fun testCheckCapacityShouldNotThrow() {
+    fun testCheckCapacityShouldNotThrowIfQuantityIsBelowPermitted() {
         assertDoesNotThrow { inventoryManager.checkCapacity(10) }
     }
 
     @Test
-    fun testCheckCapacityShouldThrow() {
-        assertDoesNotThrow { inventoryManager.checkCapacity(11) }
+    fun testCheckCapacityShouldThrowIfQuantityIsAbovePermitted() {
+        assertThrows<IllegalStateException> { inventoryManager.checkCapacity(11) }
     }
 }
